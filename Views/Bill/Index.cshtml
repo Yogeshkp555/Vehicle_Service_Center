@@ -1,0 +1,142 @@
+﻿@model List<Vehicle_Service_Center.Models.Bill>
+
+@{
+    ViewData["Title"] = "Manage Bills";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Manage Bills</h2>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+            Create Bill
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No bills found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Customer</th>
+                        <th>Vehicle</th>
+                        <th>Service</th>
+                        <th>Spare Part Charge</th>
+                        <th>Labour Charge</th>
+                        <th>Total</th>
+                        <th>Payment Type</th>
+                        <th>Payment Status</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var bill in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @(bill.Customer?.FullName ?? "N/A")
+                            </td>
+
+                            <td>
+                                @bill.VehicleNumberPlate
+                            </td>
+
+                            <td>
+                                @bill.ServiceDescription
+                            </td>
+
+                            <td>
+                                ₹@bill.SparePartCharge
+                            </td>
+
+                            <td>
+                                ₹@bill.LabourCharge
+                            </td>
+
+                            <td>
+                                <strong>
+                                    ₹@bill.TotalAmount
+                                </strong>
+                            </td>
+
+                            <td>
+                                @bill.PaymentType
+                            </td>
+
+                            <td>
+                                @if (bill.PaymentStatus == "Paid")
+                                {
+                                    <span class="badge bg-success">
+                                        Paid
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        @bill.PaymentStatus
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @bill.CreatedAt.ToString("dd-MM-yyyy")
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@bill.Id"
+                                   class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
+
+                                <form asp-action="Delete"
+                                      asp-route-id="@bill.Id"
+                                      method="post"
+                                      class="d-inline">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this bill?');">
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

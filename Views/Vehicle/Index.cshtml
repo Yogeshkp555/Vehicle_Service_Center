@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Vehicle_Service_Center.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Manage Vehicles";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2>Manage Vehicles</h2>
+
+            <p class="text-muted">
+                Manage customer vehicles.
+            </p>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+            Add Vehicle
+        </a>
+
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No vehicles found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Number Plate</th>
+                        <th>Customer</th>
+                        <th>Type</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Issue</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var vehicle in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @vehicle.VehicleNumberPlate
+                            </td>
+
+                            <td>
+                                @vehicle.Customer?.FullName
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleType
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleBrand
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleModel
+                            </td>
+
+                            <td>
+                                @(string.IsNullOrEmpty(vehicle.Issue)
+                                    ? "-"
+                                    : vehicle.Issue)
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@vehicle.Id"
+                                   class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
+
+                                <form asp-action="Delete"
+                                      asp-route-id="@vehicle.Id"
+                                      method="post"
+                                      class="d-inline"
+                                      onsubmit="return confirm('Are you sure you want to delete this vehicle?');">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

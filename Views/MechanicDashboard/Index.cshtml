@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Mechanic Dashboard";
+}
+
+<div class="container mt-4">
+
+    <div class="mb-4">
+        <h2>Mechanic Dashboard</h2>
+
+        <p class="text-muted">
+            Welcome, @User.Identity?.Name
+        </p>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">My Profile</h5>
+
+                    <p class="card-text">
+                        View your profile information.
+                    </p>
+
+                    <a asp-controller="Profile"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        My Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">My Services</h5>
+
+                    <p class="card-text">
+                        View services assigned to you.
+                    </p>
+
+                    <a asp-action="MyServices"
+                       class="btn btn-primary">
+                        My Services
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

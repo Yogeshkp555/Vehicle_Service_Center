@@ -1,0 +1,108 @@
+﻿@model List<Vehicle_Service_Center.Models.Bill>
+
+@{
+    ViewData["Title"] = "My Bills";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>My Bills</h2>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No bills found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Vehicle Number</th>
+                        <th>Service Description</th>
+                        <th>Spare Part Charge</th>
+                        <th>Labour Charge</th>
+                        <th>Total</th>
+                        <th>Payment Type</th>
+                        <th>Payment Status</th>
+                        <th>Date</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var bill in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @bill.VehicleNumberPlate
+                            </td>
+
+                            <td>
+                                @bill.ServiceDescription
+                            </td>
+
+                            <td>
+                                ₹@bill.SparePartCharge
+                            </td>
+
+                            <td>
+                                ₹@bill.LabourCharge
+                            </td>
+
+                            <td>
+                                <strong>
+                                    ₹@bill.TotalAmount
+                                </strong>
+                            </td>
+
+                            <td>
+                                @bill.PaymentType
+                            </td>
+
+                            <td>
+                                @if (bill.PaymentStatus == "Paid")
+                                {
+                                    <span class="badge bg-success">
+                                        Paid
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        @bill.PaymentStatus
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @bill.CreatedAt.ToString("dd-MM-yyyy")
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

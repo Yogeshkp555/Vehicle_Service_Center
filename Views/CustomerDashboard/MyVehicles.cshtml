@@ -1,0 +1,72 @@
+﻿@model List<Vehicle_Service_Center.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "My Vehicles";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>My Vehicles</h2>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No vehicles found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Vehicle Number</th>
+                        <th>Type</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Issue</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var vehicle in Model)
+                    {
+                        <tr>
+                            <td>
+                                @vehicle.VehicleNumberPlate
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleType
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleBrand
+                            </td>
+
+                            <td>
+                                @vehicle.VehicleModel
+                            </td>
+
+                            <td>
+                                @(vehicle.Issue ?? "-")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

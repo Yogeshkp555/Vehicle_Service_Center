@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+
+    <div class="mb-4">
+        <h2>Admin Dashboard</h2>
+        <p class="text-muted">
+            Welcome, @User.Identity?.Name
+        </p>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Mechanics</h5>
+                    <p class="card-text">Create and manage mechanics.</p>
+                    <a asp-controller="Mechanic"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Manage Mechanics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text">Create and manage customers.</p>
+                    <a asp-controller="Customer"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Manage Customers
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Vehicles</h5>
+                    <p class="card-text">Manage customer vehicles.</p>
+                    <a asp-controller="Vehicle"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Manage Vehicles
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Service Requests</h5>
+                    <p class="card-text">Manage and assign service requests.</p>
+                    <a asp-controller="ServiceRequest"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Manage Service Requests
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Bills</h5>
+                    <p class="card-text">Create and manage service bills.</p>
+                    <a asp-controller="Bill"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Manage Bills
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,94 @@
+﻿@model Vehicle_Service_Center.ViewModels.UpdateMechanicServiceViewModel
+
+@{
+    ViewData["Title"] = "Edit Service";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Update Service</h2>
+
+    <form asp-action="EditService" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ServiceDescription"
+                   class="form-label">
+            </label>
+
+            <textarea asp-for="ServiceDescription"
+                      class="form-control"
+                      rows="4">
+            </textarea>
+
+            <span asp-validation-for="ServiceDescription"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SparePartUsedDescription"
+                   class="form-label">
+            </label>
+
+            <textarea asp-for="SparePartUsedDescription"
+                      class="form-control"
+                      rows="3">
+            </textarea>
+
+            <span asp-validation-for="SparePartUsedDescription"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Status"
+                   class="form-label">
+            </label>
+
+            <select asp-for="Status"
+                    class="form-select">
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="InProgress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+            <span asp-validation-for="Status"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Update Service
+        </button>
+
+        <a asp-action="MyServices"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

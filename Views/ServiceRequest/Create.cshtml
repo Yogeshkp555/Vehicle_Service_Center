@@ -1,0 +1,109 @@
+﻿@model Vehicle_Service_Center.ViewModels.CreateServiceRequestViewModel
+
+@{
+    ViewData["Title"] = "Create Service Request";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Create Service Request</h2>
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CustomerId" class="form-label"></label>
+
+            <select asp-for="CustomerId"
+                    asp-items="Model.Customers"
+                    class="form-select">
+                <option value="">-- Select Customer --</option>
+            </select>
+
+            <span asp-validation-for="CustomerId"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="VehicleId" class="form-label"></label>
+
+            <select asp-for="VehicleId"
+                    asp-items="Model.Vehicles"
+                    class="form-select">
+                <option value="">-- Select Vehicle --</option>
+            </select>
+
+            <span asp-validation-for="VehicleId"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ServiceDescription"
+                   class="form-label">
+            </label>
+
+            <textarea asp-for="ServiceDescription"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Enter service description">
+            </textarea>
+
+            <span asp-validation-for="ServiceDescription"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SparePartUsedDescription"
+                   class="form-label">
+            </label>
+
+            <textarea asp-for="SparePartUsedDescription"
+                      class="form-control"
+                      rows="3"
+                      placeholder="Enter spare parts used">
+            </textarea>
+
+            <span asp-validation-for="SparePartUsedDescription"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MechanicId" class="form-label"></label>
+
+            <select asp-for="MechanicId"
+                    asp-items="Model.Mechanics"
+                    class="form-select">
+                <option value="">-- Select Mechanic --</option>
+            </select>
+
+            <span asp-validation-for="MechanicId"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Create Service Request
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

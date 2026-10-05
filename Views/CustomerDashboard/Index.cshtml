@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Customer Dashboard";
+}
+
+<div class="container mt-4">
+
+    <div class="mb-4">
+        <h2>Customer Dashboard</h2>
+
+        <p class="text-muted">
+            Welcome, @User.Identity?.Name
+        </p>
+    </div>
+
+    <div class="row g-3">
+
+        <!-- Profile -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        My Profile
+                    </h5>
+
+                    <p class="card-text">
+                        View your profile information.
+                    </p>
+
+                    <a asp-controller="Profile"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        My Profile
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Vehicles -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        My Vehicles
+                    </h5>
+
+                    <p class="card-text">
+                        View your registered vehicles.
+                    </p>
+
+                    <a asp-controller="CustomerDashboard"
+                       asp-action="MyVehicles"
+                       class="btn btn-primary">
+                        My Vehicles
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Service Requests -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        My Service Requests
+                    </h5>
+
+                    <p class="card-text">
+                        View your service requests and status.
+                    </p>
+
+                    <a asp-controller="CustomerDashboard"
+                       asp-action="MyServices"
+                       class="btn btn-primary">
+                        My Services
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bills -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        My Bills
+                    </h5>
+
+                    <p class="card-text">
+                        View your service bills and payment status.
+                    </p>
+
+                    <a asp-controller="CustomerDashboard"
+                       asp-action="MyBills"
+                       class="btn btn-primary">
+                        My Bills
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

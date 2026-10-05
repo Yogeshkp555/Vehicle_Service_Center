@@ -1,0 +1,86 @@
+﻿@model Vehicle_Service_Center.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container mt-4">
+
+    <div class="mb-4">
+        <h2>My Profile</h2>
+        <p class="text-muted">
+            Your account information
+        </p>
+    </div>
+
+    <div class="card shadow-sm" style="max-width: 600px;">
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <strong>Full Name</strong>
+                <p class="mb-0">@Model.FullName</p>
+            </div>
+
+            <hr />
+
+            <div class="mb-3">
+                <strong>Email</strong>
+                <p class="mb-0">@Model.Email</p>
+            </div>
+
+            <hr />
+
+            <div class="mb-3">
+                <strong>Mobile Number</strong>
+                <p class="mb-0">
+                    @(string.IsNullOrEmpty(Model.PhoneNumber)
+                        ? "-"
+                        : Model.PhoneNumber)
+                </p>
+            </div>
+
+            <hr />
+
+            <div class="mb-3">
+                <strong>Address</strong>
+                <p class="mb-0">
+                    @(string.IsNullOrEmpty(Model.Address)
+                        ? "-"
+                        : Model.Address)
+                </p>
+            </div>
+
+            <hr />
+
+            <div>
+                <strong>Username</strong>
+                <p class="mb-0">@Model.UserName</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+
+        @if (User.IsInRole("Mechanic"))
+        {
+            <a asp-controller="MechanicDashboard"
+               asp-action="Index"
+               class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Admin"
+               asp-action="Dashboard"
+               class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+        }
+
+    </div>
+
+</div>

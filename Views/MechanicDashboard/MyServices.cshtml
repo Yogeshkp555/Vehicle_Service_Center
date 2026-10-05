@@ -1,0 +1,108 @@
+﻿@model List<Vehicle_Service_Center.Models.ServiceRequest>
+
+@{
+    ViewData["Title"] = "My Services";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>My Services</h2>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No services assigned to you.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Customer</th>
+                        <th>Vehicle</th>
+                        <th>Service Description</th>
+                        <th>Spare Parts</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var service in Model)
+                    {
+                        <tr>
+                            <td>
+                                @(service.Customer?.FullName ?? "N/A")
+                            </td>
+
+                            <td>
+                                @(service.Vehicle?.VehicleNumberPlate ?? "N/A")
+                            </td>
+
+                            <td>
+                                @service.ServiceDescription
+                            </td>
+
+                            <td>
+                                @(service.SparePartUsedDescription ?? "-")
+                            </td>
+
+                            <td>
+                                @if (service.Status == "Completed")
+                                {
+                                    <span class="badge bg-success">
+                                        Completed
+                                    </span>
+                                }
+                                else if (service.Status == "InProgress")
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        In Progress
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        @service.Status
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @service.CreatedAt.ToString("dd-MM-yyyy")
+                            </td>
+
+                            <td>
+                                <a asp-action="EditService"
+                                   asp-route-id="@service.Id"
+                                   class="btn btn-sm btn-warning">
+                                    Edit Service
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    }
+
+</div>
