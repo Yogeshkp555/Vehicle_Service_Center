@@ -20,7 +20,7 @@ namespace Vehicle_Service_Center.Data
                 }
             }
 
-            // Check Admin
+            // Check Admin user
             var admin = await userManager.FindByEmailAsync("admin@gmail.com");
 
             if (admin == null)
