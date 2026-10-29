@@ -227,17 +227,28 @@ namespace Vehicle_Service_Center.Controllers
 
             if (serviceRequest == null)
             {
-                return NotFound();
+                TempData["Error"] =
+                    "Service request not found.";
+
+                return RedirectToAction(nameof(Index));
             }
 
-            await _serviceRequestRepository.DeleteAsync(serviceRequest);
+            try
+            {
+                await _serviceRequestRepository.DeleteAsync(
+                    serviceRequest);
 
-            TempData["Success"] =
-                "Service request deleted successfully.";
+                TempData["Success"] =
+                    "Service request deleted successfully.";
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+            {
+                TempData["Error"] =
+                    "This service request cannot be deleted because a bill is linked to it. Please manage the bill first.";
+            }
 
             return RedirectToAction(nameof(Index));
         }
-
         private async Task LoadDropdowns(
             CreateServiceRequestViewModel model)
         {

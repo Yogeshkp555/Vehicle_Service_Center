@@ -1,8 +1,300 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ================= HERO SECTION ================= -->
+
+<section class="vsc-hero">
+
+    <div class="row align-items-center g-4">
+
+        <div class="col-lg-7">
+
+            <div class="vsc-hero-content">
+
+                <span class="vsc-hero-badge">
+                    <i class="bi bi-shield-check me-1"></i>
+                    Reliable Vehicle Service Management
+                </span>
+
+                <h1 class="vsc-hero-title">
+                    Vehicle Service
+                    <span>Center</span>
+                </h1>
+
+                <p class="vsc-hero-text">
+                    A simple and efficient system to manage customers,
+                    vehicles, service requests, mechanics, and billing
+                    in one place.
+                </p>
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Admin"
+                           asp-action="Dashboard"
+                           class="btn btn-light btn-lg px-4 me-2">
+                            <i class="bi bi-speedometer2 me-2"></i>
+                            Go to Dashboard
+                        </a>
+                    }
+                    else if (User.IsInRole("Mechanic"))
+                    {
+                        <a asp-controller="MechanicDashboard"
+                           asp-action="Index"
+                           class="btn btn-light btn-lg px-4 me-2">
+                            <i class="bi bi-tools me-2"></i>
+                            My Dashboard
+                        </a>
+                    }
+                    else if (User.IsInRole("Customer"))
+                    {
+                        <a asp-controller="CustomerDashboard"
+                           asp-action="Index"
+                           class="btn btn-light btn-lg px-4 me-2">
+                            <i class="bi bi-speedometer2 me-2"></i>
+                            My Dashboard
+                        </a>
+                    }
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-5">
+
+            <div class="vsc-hero-icon">
+
+                <i class="bi bi-car-front-fill"></i>
+
+                <div class="vsc-hero-icon-small">
+                    <i class="bi bi-gear-fill"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="mt-5">
+
+    <div class="text-center mb-4">
+
+        <span class="text-primary fw-semibold">
+            OUR SYSTEM
+        </span>
+
+        <h2 class="mt-2">
+            Everything You Need
+        </h2>
+
+        <p class="text-muted">
+            Manage your vehicle service operations easily and efficiently.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- Customers -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="vsc-feature-card h-100">
+
+                <div class="vsc-feature-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+                <h5>Customer Management</h5>
+
+                <p>
+                    Manage customer information and their service-related
+                    records in one place.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Vehicles -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="vsc-feature-card h-100">
+
+                <div class="vsc-feature-icon">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+
+                <h5>Vehicle Management</h5>
+
+                <p>
+                    Keep track of vehicle numbers, brands, models,
+                    types, and reported issues.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Services -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="vsc-feature-card h-100">
+
+                <div class="vsc-feature-icon">
+                    <i class="bi bi-tools"></i>
+                </div>
+
+                <h5>Service Management</h5>
+
+                <p>
+                    Assign service requests to mechanics and monitor
+                    their current status.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Billing -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="vsc-feature-card h-100">
+
+                <div class="vsc-feature-icon">
+                    <i class="bi bi-receipt-cutoff"></i>
+                </div>
+
+                <h5>Billing</h5>
+
+                <p>
+                    Manage spare part charges, labour charges,
+                    payment type, and payment status.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORKFLOW ================= -->
+
+<section class="vsc-workflow-section mt-5">
+
+    <div class="text-center mb-4">
+
+        <span class="text-primary fw-semibold">
+            HOW IT WORKS
+        </span>
+
+        <h2 class="mt-2">
+            Simple Service Workflow
+        </h2>
+
+    </div>
+
+
+    <div class="row g-4 text-center">
+
+
+        <div class="col-md-3">
+
+            <div class="vsc-step">
+
+                <div class="vsc-step-number">
+                    1
+                </div>
+
+                <h5>Register Customer</h5>
+
+                <p class="text-muted">
+                    Admin creates customer and mechanic accounts.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="vsc-step">
+
+                <div class="vsc-step-number">
+                    2
+                </div>
+
+                <h5>Add Vehicle</h5>
+
+                <p class="text-muted">
+                    Vehicle information is added and linked to a customer.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="vsc-step">
+
+                <div class="vsc-step-number">
+                    3
+                </div>
+
+                <h5>Create Service</h5>
+
+                <p class="text-muted">
+                    Admin creates a service request and assigns a mechanic.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="vsc-step">
+
+                <div class="vsc-step-number">
+                    4
+                </div>
+
+                <h5>Complete & Bill</h5>
+
+                <p class="text-muted">
+                    Mechanic updates the service and admin manages the bill.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+

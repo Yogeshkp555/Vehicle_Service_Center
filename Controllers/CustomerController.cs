@@ -201,34 +201,41 @@ namespace Vehicle_Service_Center.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {
-            var customer =
-                await _userManager.FindByIdAsync(id);
+            var customer = await _userManager.FindByIdAsync(id);
 
             if (customer == null)
             {
-                return NotFound();
+                TempData["Error"] = "Customer not found.";
+                return RedirectToAction(nameof(Index));
             }
 
-            var roles =
-                await _userManager.GetRolesAsync(customer);
+            var roles = await _userManager.GetRolesAsync(customer);
 
             if (!roles.Contains("Customer"))
             {
-                return NotFound();
+                TempData["Error"] = "This user is not a customer.";
+                return RedirectToAction(nameof(Index));
             }
 
-            var result =
-                await _userManager.DeleteAsync(customer);
-
-            if (result.Succeeded)
+            try
             {
-                TempData["Success"] =
-                    "Customer deleted successfully.";
+                var result = await _userManager.DeleteAsync(customer);
+
+                if (result.Succeeded)
+                {
+                    TempData["Success"] =
+                        "Customer deleted successfully.";
+                }
+                else
+                {
+                    TempData["Error"] =
+                        "Unable to delete customer.";
+                }
             }
-            else
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
             {
                 TempData["Error"] =
-                    "Unable to delete customer.";
+                    "This customer cannot be deleted because the customer has related vehicles, service requests, or bills. Please remove or manage those records first.";
             }
 
             return RedirectToAction(nameof(Index));

@@ -2,38 +2,125 @@
     ViewData["Title"] = "Customer Dashboard";
 }
 
-<div class="container mt-4">
+<div class="container-fluid py-2">
 
-    <div class="mb-4">
-        <h2>Customer Dashboard</h2>
+    <!-- ================= HEADER ================= -->
 
-        <p class="text-muted">
-            Welcome, @User.Identity?.Name
-        </p>
+    <div class="d-flex flex-column flex-md-row justify-content-between
+        align-items-md-center mb-4">
+
+        <div>
+
+            <span class="text-primary fw-semibold small">
+                CUSTOMER PANEL
+            </span>
+
+            <h2 class="mt-1 mb-1">
+                Customer Dashboard
+            </h2>
+
+            <p class="text-muted mb-0">
+                Welcome back, @User.Identity?.Name
+            </p>
+
+        </div>
+
+        <div class="mt-3 mt-md-0">
+
+            <span class="badge bg-light text-dark border px-3 py-2">
+
+                <i class="bi bi-person-circle text-primary me-1"></i>
+
+                Customer
+
+            </span>
+
+        </div>
+
     </div>
 
-    <div class="row g-3">
 
-        <!-- Profile -->
+    <!-- ================= WELCOME CARD ================= -->
+
+    <div class="vsc-role-banner mb-4">
+
+        <div class="vsc-role-banner-icon">
+
+            <i class="bi bi-car-front-fill"></i>
+
+        </div>
+
+        <div>
+
+            <h4 class="mb-1">
+                Welcome to Vehicle Service Center
+            </h4>
+
+            <p class="mb-0">
+                Manage your vehicles, service requests and
+                bills from one place.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= QUICK ACCESS ================= -->
+
+    <div class="mb-3">
+
+        <span class="text-primary fw-semibold small">
+            QUICK ACCESS
+        </span>
+
+        <h4 class="mt-1">
+            Manage Your Services
+        </h4>
+
+        <p class="text-muted">
+            Access your profile, vehicles, service requests and bills.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- MY PROFILE -->
 
         <div class="col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="vsc-role-card h-100">
 
-                <div class="card-body">
+                <div class="vsc-role-card-icon">
 
-                    <h5 class="card-title">
+                    <i class="bi bi-person-circle"></i>
+
+                </div>
+
+                <div class="vsc-role-card-content">
+
+                    <h5>
                         My Profile
                     </h5>
 
-                    <p class="card-text">
-                        View your profile information.
+                    <p>
+                        View your personal information such as
+                        name, email, mobile number and address.
                     </p>
 
                     <a asp-controller="Profile"
                        asp-action="Index"
                        class="btn btn-primary">
+
+                        <i class="bi bi-person me-1"></i>
+
                         My Profile
+
+                        <i class="bi bi-arrow-right ms-1"></i>
+
                     </a>
 
                 </div>
@@ -43,26 +130,39 @@
         </div>
 
 
-        <!-- Vehicles -->
+        <!-- MY VEHICLES -->
 
         <div class="col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="vsc-role-card h-100">
 
-                <div class="card-body">
+                <div class="vsc-role-card-icon">
 
-                    <h5 class="card-title">
+                    <i class="bi bi-car-front-fill"></i>
+
+                </div>
+
+                <div class="vsc-role-card-content">
+
+                    <h5>
                         My Vehicles
                     </h5>
 
-                    <p class="card-text">
-                        View your registered vehicles.
+                    <p>
+                        View your registered vehicles and their
+                        details such as brand, model and issue.
                     </p>
 
                     <a asp-controller="CustomerDashboard"
                        asp-action="MyVehicles"
                        class="btn btn-primary">
+
+                        <i class="bi bi-car-front me-1"></i>
+
                         My Vehicles
+
+                        <i class="bi bi-arrow-right ms-1"></i>
+
                     </a>
 
                 </div>
@@ -72,26 +172,39 @@
         </div>
 
 
-        <!-- Service Requests -->
+        <!-- MY SERVICES -->
 
         <div class="col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="vsc-role-card h-100">
 
-                <div class="card-body">
+                <div class="vsc-role-card-icon">
 
-                    <h5 class="card-title">
+                    <i class="bi bi-wrench-adjustable-circle"></i>
+
+                </div>
+
+                <div class="vsc-role-card-content">
+
+                    <h5>
                         My Service Requests
                     </h5>
 
-                    <p class="card-text">
-                        View your service requests and status.
+                    <p>
+                        View your service requests, assigned mechanic
+                        and current service status.
                     </p>
 
                     <a asp-controller="CustomerDashboard"
                        asp-action="MyServices"
                        class="btn btn-primary">
+
+                        <i class="bi bi-tools me-1"></i>
+
                         My Services
+
+                        <i class="bi bi-arrow-right ms-1"></i>
+
                     </a>
 
                 </div>
@@ -101,29 +214,73 @@
         </div>
 
 
-        <!-- Bills -->
+        <!-- MY BILLS -->
 
         <div class="col-md-6">
 
-            <div class="card shadow-sm">
+            <div class="vsc-role-card h-100">
 
-                <div class="card-body">
+                <div class="vsc-role-card-icon">
 
-                    <h5 class="card-title">
+                    <i class="bi bi-receipt"></i>
+
+                </div>
+
+                <div class="vsc-role-card-content">
+
+                    <h5>
                         My Bills
                     </h5>
 
-                    <p class="card-text">
-                        View your service bills and payment status.
+                    <p>
+                        View your service bills, total amount
+                        and payment status.
                     </p>
 
                     <a asp-controller="CustomerDashboard"
                        asp-action="MyBills"
                        class="btn btn-primary">
+
+                        <i class="bi bi-receipt me-1"></i>
+
                         My Bills
+
+                        <i class="bi bi-arrow-right ms-1"></i>
+
                     </a>
 
                 </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <div class="vsc-admin-info mt-4">
+
+        <div class="d-flex align-items-start gap-3">
+
+            <div class="vsc-info-icon">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h6 class="mb-1">
+                    Customer Information
+                </h6>
+
+                <p class="text-muted mb-0">
+                    You can view your registered vehicles, track
+                    service requests assigned to mechanics and
+                    check your service bills and payment status.
+                </p>
 
             </div>
 
@@ -132,3 +289,4 @@
     </div>
 
 </div>
+

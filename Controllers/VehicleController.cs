@@ -170,17 +170,25 @@ namespace Vehicle_Service_Center.Controllers
 
             if (vehicle == null)
             {
-                return NotFound();
+                TempData["Error"] = "Vehicle not found.";
+                return RedirectToAction(nameof(Index));
             }
 
-            await _vehicleRepository.DeleteAsync(vehicle);
+            try
+            {
+                await _vehicleRepository.DeleteAsync(vehicle);
 
-            TempData["Success"] =
-                "Vehicle deleted successfully.";
+                TempData["Success"] =
+                    "Vehicle deleted successfully.";
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+            {
+                TempData["Error"] =
+                    "This vehicle cannot be deleted because it is linked to one or more service requests. Please manage those service requests first.";
+            }
 
             return RedirectToAction(nameof(Index));
         }
-
         private async Task LoadCustomers(
             CreateVehicleViewModel model)
         {

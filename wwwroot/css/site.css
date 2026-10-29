@@ -1,31 +1,1334 @@
+/* =========================================================
+   VEHICLE SERVICE CENTER - GLOBAL UI
+   ========================================================= */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #f5f7fb;
+    color: #212529;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.vsc-navbar {
+    background: linear-gradient(135deg, #172554, #1e40af);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+    padding: 12px 0;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .vsc-navbar .navbar-brand {
+        color: #ffffff;
+        font-size: 1.15rem;
+        letter-spacing: 0.2px;
+    }
+
+        .vsc-navbar .navbar-brand:hover {
+            color: #ffffff;
+        }
+
+.vsc-logo {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    font-size: 1.25rem;
+}
+
+.vsc-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 9px 13px !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+    .vsc-navbar .nav-link:hover {
+        color: #ffffff !important;
+        background-color: rgba(255, 255, 255, 0.13);
+    }
+
+.vsc-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+    .vsc-navbar .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+.vsc-login-area {
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+main {
+    min-height: calc(100vh - 150px);
+}
+
+    main > .container {
+        max-width: 1200px;
+    }
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    color: #172033;
+}
+
+h2 {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+    .btn-primary:hover {
+        background-color: #1d4ed8;
+        border-color: #1d4ed8;
+    }
+
+.btn-warning {
+    color: #212529;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+}
+
+.card-header {
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+
+/* =========================================================
+   DASHBOARD STAT CARDS
+   ========================================================= */
+
+.dashboard-card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.11);
+    }
+
+    .dashboard-card .card-body {
+        padding: 1.4rem;
+    }
+
+
+/* =========================================================
+   HOME PAGE - HERO
+   ========================================================= */
+
+.vsc-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    padding: 65px 55px;
+    background: linear-gradient(135deg, #172554, #1d4ed8);
+    box-shadow: 0 12px 35px rgba(30, 64, 175, 0.2);
+    color: #ffffff;
+}
+
+    .vsc-hero::before {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        top: -120px;
+        right: -70px;
+    }
+
+    .vsc-hero::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+        bottom: -100px;
+        left: 35%;
+    }
+
+.vsc-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.vsc-hero-badge {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.13);
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+}
+
+.vsc-hero-title {
+    color: #ffffff;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+    .vsc-hero-title span {
+        display: block;
+        color: #bfdbfe;
+    }
+
+.vsc-hero-text {
+    max-width: 650px;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.vsc-hero .btn-light {
+    color: #1e3a8a;
+    border: none;
+    font-weight: 600;
+}
+
+    .vsc-hero .btn-light:hover {
+        color: #172554;
+        background-color: #ffffff;
+    }
+
+
+/* Hero Icon */
+
+.vsc-hero-icon {
+    position: relative;
+    z-index: 2;
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.vsc-hero-icon-small {
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #2563eb;
+    font-size: 1.7rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   HOME PAGE - FEATURES
+   ========================================================= */
+
+.vsc-feature-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    transition: all 0.25s ease;
+}
+
+    .vsc-feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+        border-color: #bfdbfe;
+    }
+
+.vsc-feature-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 1.5rem;
+}
+
+.vsc-feature-card h5 {
+    margin-bottom: 10px;
+}
+
+.vsc-feature-card p {
+    color: #6b7280;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   HOME PAGE - WORKFLOW
+   ========================================================= */
+
+.vsc-workflow-section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 40px 30px;
+}
+
+.vsc-step {
+    padding: 10px;
+}
+
+.vsc-step-number {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.vsc-step h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.vsc-step p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control,
+.form-select {
+    border: 1px solid #d7dce5;
+    border-radius: 8px;
+    padding: 9px 12px;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.12);
+    }
+
+.form-label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+textarea.form-control {
+    min-height: 110px;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table {
+    background-color: #ffffff;
+    margin-bottom: 0;
+}
+
+    .table thead th {
+        background-color: #f1f5f9;
+        color: #374151;
+        font-weight: 600;
+        border-bottom: 2px solid #e2e8f0;
+        white-space: nowrap;
+    }
+
+    .table tbody td {
+        vertical-align: middle;
+    }
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+    border: none;
+    border-radius: 10px;
+}
+
+.alert-success {
+    background-color: #ecfdf3;
+    color: #166534;
+}
+
+.alert-danger {
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+.alert-info {
+    background-color: #eff6ff;
+    color: #1e40af;
+}
+
+.alert-warning {
+    background-color: #fffbeb;
+    color: #92400e;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: #2563eb;
+}
+
+    a:hover {
+        color: #1d4ed8;
+    }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.vsc-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 22px 0;
+    margin-top: 35px;
+}
+
+.vsc-footer-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eff6ff;
+    color: #2563eb;
+    border-radius: 8px;
+}
+
+.vsc-footer a {
+    text-decoration: none;
+}
+
+    .vsc-footer a:hover {
+        text-decoration: underline;
+    }
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .vsc-navbar .navbar-nav {
+        padding-top: 12px;
+    }
+
+    .vsc-navbar .nav-link {
+        margin-bottom: 3px;
+    }
+
+    .vsc-login-area {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .vsc-hero {
+        padding: 45px 35px;
+    }
+
+    .vsc-hero-icon {
+        width: 210px;
+        height: 210px;
+        font-size: 6rem;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+
+    main > .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .table-responsive {
+        border-radius: 10px;
+    }
+
+    .vsc-footer {
+        text-align: center;
+    }
+
+        .vsc-footer .d-flex {
+            justify-content: center;
+        }
+
+    .vsc-hero {
+        padding: 40px 25px;
+        text-align: center;
+    }
+
+    .vsc-hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vsc-hero-icon {
+        width: 180px;
+        height: 180px;
+        font-size: 5rem;
+        margin-top: 20px;
+    }
+
+    .vsc-hero-icon-small {
+        width: 55px;
+        height: 55px;
+        right: 0;
+        bottom: 10px;
+    }
+
+    .vsc-workflow-section {
+        padding: 30px 20px;
+    }
+}
+
+
+/* =========================================================
+   FORM FLOATING SUPPORT
+   ========================================================= */
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* =========================================================
+   MECHANIC / CUSTOMER ROLE DASHBOARD
+   ========================================================= */
+.vsc-role-banner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 25px;
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+    border: 1px solid #dbeafe;
+    border-radius: 15px;
+}
+
+.vsc-role-banner-icon {
+    min-width: 58px;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.vsc-role-banner h4 {
+    color: #172033;
+}
+
+.vsc-role-banner p {
+    color: #6b7280;
+}
+
+
+.vsc-role-card {
+    display: flex;
+    gap: 20px;
+    padding: 28px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    transition: all 0.2s ease;
+}
+
+    .vsc-role-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 9px 24px rgba(15, 23, 42, 0.09);
+    }
+
+.vsc-role-card-icon {
+    min-width: 55px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 1.45rem;
+}
+
+.vsc-role-card-content {
+    flex: 1;
+}
+
+    .vsc-role-card-content h5 {
+        margin-bottom: 8px;
+    }
+
+    .vsc-role-card-content p {
+        color: #6b7280;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+
+@media (max-width: 575.98px) {
+
+    .vsc-role-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .vsc-role-card {
+        flex-direction: column;
+        padding: 22px;
+    }
+}
+
+
+/* =========================================================
+   CUSTOMER MY VEHICLES PAGE
+   ========================================================= */
+.vsc-vehicles-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+    min-width: 220px;
+    padding: 18px 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.vsc-summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 1.4rem;
+}
+
+.vsc-vehicles-summary h3 {
+    font-weight: 700;
+    color: #172033;
+}
+
+.vsc-table-card {
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.vsc-table-header th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.vsc-table-card tbody td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #374151;
+}
+
+.vsc-vehicle-row-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+.vsc-empty-state {
+    padding: 55px 20px;
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 15px;
+}
+
+.vsc-empty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 1.8rem;
+}
+
+.vsc-empty-state h5 {
+    color: #172033;
+    font-weight: 600;
+}
+
+.vsc-empty-state p {
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+@media (max-width: 575.98px) {
+    .vsc-vehicles-summary {
+        width: 100%;
+    }
+
+    .vsc-table-card {
+        border-radius: 10px;
+    }
+}
+
+
+/* =========================================================
+   CUSTOMER MY SERVICES PAGE
+   ========================================================= */
+.vsc-service-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    padding: 18px 22px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.vsc-service-summary h3 {
+    font-weight: 700;
+    color: #172033;
+}
+
+.vsc-summary-orange {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.vsc-summary-green {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.vsc-service-description {
+    min-width: 160px;
+    max-width: 300px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.vsc-mechanic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.vsc-status-completed {
+    padding: 7px 10px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 600;
+}
+
+.vsc-status-progress {
+    padding: 7px 10px;
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 600;
+}
+
+.vsc-status-pending {
+    padding: 7px 10px;
+    background: #e2e8f0;
+    color: #334155;
+    font-weight: 600;
+}
+
+@media (max-width: 575.98px) {
+    .vsc-service-summary {
+        padding: 16px;
+    }
+
+    .vsc-service-description {
+        min-width: 140px;
+    }
+}
+
+/* =========================================================
+   CUSTOMER MY BILLS PAGE
+   ========================================================= */
+.vsc-bill-total {
+    color: #166534;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.vsc-bills-footer td {
+    padding: 18px 16px;
+    background: #f8fafc;
+    border-top: 2px solid #e5e7eb;
+}
+
+    .vsc-bills-footer td:first-child {
+        color: #334155;
+    }
+
+.vsc-bills-footer .vsc-bill-total {
+    font-size: 1.05rem;
+}
+
+.vsc-table-card .table td {
+    vertical-align: middle;
+}
+
+@media (max-width: 767.98px) {
+    .vsc-bills-footer td {
+        padding: 14px 10px;
+    }
+}
+
+
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+.admin-dashboard {
+    padding: 28px 0 45px;
+    color: #172033;
+}
+
+.admin-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 38px;
+}
+
+.admin-eyebrow {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.admin-dashboard-header h1 {
+    margin: 0;
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #172033;
+}
+
+.admin-dashboard-header p {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.admin-profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 18px;
+    background: #fff;
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+    .admin-profile-badge > i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 21px;
+    }
+
+    .admin-profile-badge strong,
+    .admin-profile-badge small {
+        display: block;
+    }
+
+    .admin-profile-badge strong {
+        font-size: 13px;
+        color: #172033;
+    }
+
+    .admin-profile-badge small {
+        margin-top: 4px;
+        font-size: 11px;
+        color: #64748b;
+    }
+
+.admin-section-heading {
+    margin-bottom: 18px;
+}
+
+    .admin-section-heading h2 {
+        margin: 0;
+        font-size: 21px;
+        font-weight: 750;
+        color: #172033;
+    }
+
+    .admin-section-heading p {
+        margin: 6px 0 0;
+        font-size: 13px;
+        color: #64748b;
+    }
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-stat-card {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .admin-stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    }
+
+.admin-stat-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.admin-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    font-size: 21px;
+}
+
+.admin-stat-label {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.admin-stat-card h3 {
+    margin: 0;
+    color: #172033;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.admin-stat-card > p {
+    margin: 8px 0 0;
+    color: #8490a3;
+    font-size: 12px;
+}
+
+/* Statistic card colors */
+
+.stat-blue .admin-stat-icon {
+    background: #eaf2ff;
+    color: #2563eb;
+}
+
+.stat-purple .admin-stat-icon {
+    background: #f1eaff;
+    color: #7c3aed;
+}
+
+.stat-cyan .admin-stat-icon {
+    background: #e2f8ff;
+    color: #0891b2;
+}
+
+.stat-orange .admin-stat-icon {
+    background: #fff1df;
+    color: #ea580c;
+}
+
+.stat-green .admin-stat-icon {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.stat-pink .admin-stat-icon {
+    background: #ffe8f1;
+    color: #db2777;
+}
+
+.admin-management-heading {
+    margin-top: 42px;
+}
+
+.admin-management-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-management-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e8edf5;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+    .admin-management-card:hover {
+        transform: translateY(-4px);
+        border-color: #cbdcff;
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.075);
+    }
+
+.admin-management-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    font-size: 23px;
+}
+
+.management-purple {
+    color: #7c3aed;
+    background: #f1eaff;
+}
+
+.management-blue {
+    color: #2563eb;
+    background: #eaf2ff;
+}
+
+.management-cyan {
+    color: #0891b2;
+    background: #e2f8ff;
+}
+
+.management-orange {
+    color: #ea580c;
+    background: #fff1df;
+}
+
+.management-green {
+    color: #16a34a;
+    background: #dcfce7;
+}
+
+.admin-management-card h3 {
+    margin: 0 0 9px;
+    font-size: 17px;
+    font-weight: 750;
+    color: #172033;
+}
+
+.admin-management-card > p {
+    flex: 1;
+    margin: 0 0 22px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.admin-management-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: #fff !important;
+    background: #2563eb;
+    border-radius: 10px;
+    text-decoration: none !important;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background 0.2s ease, gap 0.2s ease;
+}
+
+    .admin-management-link:hover {
+        color: #fff !important;
+        background: #1d4ed8;
+        gap: 14px;
+    }
+
+.admin-information-panel {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 28px;
+    padding: 22px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+}
+
+.admin-information-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    color: #2563eb;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 19px;
+}
+
+.admin-information-panel h3 {
+    margin: 1px 0 7px;
+    font-size: 14px;
+    font-weight: 750;
+    color: #1e40af;
+}
+
+.admin-information-panel p {
+    margin: 0;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* Responsive layout */
+
+@media (max-width: 991px) {
+    .admin-stats-grid,
+    .admin-management-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 575px) {
+    .admin-dashboard {
+        padding-top: 18px;
+    }
+
+    .admin-dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 28px;
+    }
+
+    .admin-profile-badge {
+        width: 100%;
+    }
+
+    .admin-stats-grid,
+    .admin-management-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .admin-stat-card,
+    .admin-management-card {
+        padding: 20px;
+    }
+
+    .admin-management-heading {
+        margin-top: 32px;
+    }
+
+    .admin-information-panel {
+        padding: 17px;
+    }
 }

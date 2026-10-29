@@ -2,87 +2,171 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="container mt-4">
+<div class="admin-dashboard">
 
-    <div class="mb-4">
-        <h2>Admin Dashboard</h2>
-        <p class="text-muted">
-            Welcome, @User.Identity?.Name
-        </p>
+    <!-- Dashboard Header -->
+    <div class="admin-dashboard-header">
+        <div>
+            <span class="admin-eyebrow">VEHICLE SERVICE CENTER</span>
+            <h1>Admin Dashboard</h1>
+            <p>Welcome back, @User.Identity?.Name</p>
+        </div>
+
+        <div class="admin-profile-badge">
+            <i class="bi bi-shield-check"></i>
+            <div>
+                <strong>Administrator</strong>
+                <small>System Management</small>
+            </div>
+        </div>
     </div>
 
-    <div class="row g-3">
+    <!-- Statistics -->
+    <div class="admin-section-heading">
+        <div>
+            <h2>Overview</h2>
+            <p>Here's a summary of your service center.</p>
+        </div>
+    </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Mechanics</h5>
-                    <p class="card-text">Create and manage mechanics.</p>
-                    <a asp-controller="Mechanic"
-                       asp-action="Index"
-                       class="btn btn-primary">
-                        Manage Mechanics
-                    </a>
-                </div>
+    <div class="admin-stats-grid">
+
+        <div class="admin-stat-card stat-blue">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-people-fill"></i></div>
+                <span class="admin-stat-label">Customers</span>
             </div>
+            <h3>@ViewBag.TotalCustomers</h3>
+            <p>Total registered customers</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Customers</h5>
-                    <p class="card-text">Create and manage customers.</p>
-                    <a asp-controller="Customer"
-                       asp-action="Index"
-                       class="btn btn-primary">
-                        Manage Customers
-                    </a>
-                </div>
+        <div class="admin-stat-card stat-purple">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-tools"></i></div>
+                <span class="admin-stat-label">Mechanics</span>
             </div>
+            <h3>@ViewBag.TotalMechanics</h3>
+            <p>Registered mechanics</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Vehicles</h5>
-                    <p class="card-text">Manage customer vehicles.</p>
-                    <a asp-controller="Vehicle"
-                       asp-action="Index"
-                       class="btn btn-primary">
-                        Manage Vehicles
-                    </a>
-                </div>
+        <div class="admin-stat-card stat-cyan">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-car-front-fill"></i></div>
+                <span class="admin-stat-label">Vehicles</span>
             </div>
+            <h3>@ViewBag.TotalVehicles</h3>
+            <p>Vehicles in the system</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Service Requests</h5>
-                    <p class="card-text">Manage and assign service requests.</p>
-                    <a asp-controller="ServiceRequest"
-                       asp-action="Index"
-                       class="btn btn-primary">
-                        Manage Service Requests
-                    </a>
-                </div>
+        <div class="admin-stat-card stat-orange">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-clock-history"></i></div>
+                <span class="admin-stat-label">Pending Services</span>
             </div>
+            <h3>@ViewBag.PendingServices</h3>
+            <p>Services awaiting completion</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Bills</h5>
-                    <p class="card-text">Create and manage service bills.</p>
-                    <a asp-controller="Bill"
-                       asp-action="Index"
-                       class="btn btn-primary">
-                        Manage Bills
-                    </a>
-                </div>
+        <div class="admin-stat-card stat-green">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-check-circle-fill"></i></div>
+                <span class="admin-stat-label">Completed Services</span>
             </div>
+            <h3>@ViewBag.CompletedServices</h3>
+            <p>Successfully completed</p>
         </div>
 
+        <div class="admin-stat-card stat-pink">
+            <div class="admin-stat-top">
+                <div class="admin-stat-icon"><i class="bi bi-receipt-cutoff"></i></div>
+                <span class="admin-stat-label">Total Bills</span>
+            </div>
+            <h3>@ViewBag.TotalBills</h3>
+            <p>Generated service bills</p>
+        </div>
+
+    </div>
+
+    <!-- Management Section -->
+    <div class="admin-section-heading admin-management-heading">
+        <div>
+            <h2>Manage Your System</h2>
+            <p>Access and manage all major operations from one place.</p>
+        </div>
+    </div>
+
+    <div class="admin-management-grid">
+
+        <div class="admin-management-card">
+            <div class="admin-management-icon management-purple">
+                <i class="bi bi-tools"></i>
+            </div>
+            <h3>Mechanics</h3>
+            <p>Create and manage mechanic accounts and their information.</p>
+            <a asp-controller="Mechanics" asp-action="Index" class="admin-management-link">
+                Manage Mechanics <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="admin-management-card">
+            <div class="admin-management-icon management-blue">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <h3>Customers</h3>
+            <p>View, create, and manage customer accounts and details.</p>
+            <a asp-controller="Customers" asp-action="Index" class="admin-management-link">
+                Manage Customers <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="admin-management-card">
+            <div class="admin-management-icon management-cyan">
+                <i class="bi bi-car-front-fill"></i>
+            </div>
+            <h3>Vehicles</h3>
+            <p>Manage registered vehicles, brands, models, and issues.</p>
+            <a asp-controller="Vehicles" asp-action="Index" class="admin-management-link">
+                Manage Vehicles <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="admin-management-card">
+            <div class="admin-management-icon management-orange">
+                <i class="bi bi-clipboard2-pulse-fill"></i>
+            </div>
+            <h3>Service Requests</h3>
+            <p>Create service requests, assign mechanics, and track progress.</p>
+            <a asp-controller="ServiceRequests" asp-action="Index" class="admin-management-link">
+                Manage Services <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="admin-management-card">
+            <div class="admin-management-icon management-green">
+                <i class="bi bi-receipt-cutoff"></i>
+            </div>
+            <h3>Bills & Payments</h3>
+            <p>Manage service bills, charges, and payment status.</p>
+            <a asp-controller="Bills" asp-action="Index" class="admin-management-link">
+                Manage Bills <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Administrator Information -->
+    <div class="admin-information-panel">
+        <div class="admin-information-icon">
+            <i class="bi bi-info-circle-fill"></i>
+        </div>
+        <div>
+            <h3>Administrator Access</h3>
+            <p>
+                You can manage customers, mechanics, vehicles, service requests,
+                and billing from this dashboard. Keep service records and customer
+                information up to date.
+            </p>
+        </div>
     </div>
 
 </div>

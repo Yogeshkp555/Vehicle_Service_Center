@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewData["Title"] - Vehicle_Service_Center</title>
+    <title>@ViewData["Title"] - Vehicle Service Center</title>
 
     <script type="importmap"></script>
 
@@ -18,22 +18,41 @@
     <link rel="stylesheet"
           href="~/Vehicle_Service_Center.styles.css"
           asp-append-version="true" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 
 <body>
 
+    <!-- ================= NAVBAR ================= -->
+
     <header>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark vsc-navbar">
 
-            <div class="container-fluid">
+            <div class="container">
 
-                <a class="navbar-brand"
+                <!-- Brand -->
+
+                <a class="navbar-brand d-flex align-items-center gap-2"
                    asp-area=""
                    asp-controller="Home"
                    asp-action="Index">
-                    Vehicle_Service_Center
+
+                    <span class="vsc-logo">
+                        <i class="bi bi-car-front-fill"></i>
+                    </span>
+
+                    <span>
+                        <strong>Vehicle</strong> Service Center
+                    </span>
+
                 </a>
+
+
+                <!-- Mobile Menu Button -->
 
                 <button class="navbar-toggler"
                         type="button"
@@ -47,82 +66,117 @@
 
                 </button>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 
-                    <ul class="navbar-nav flex-grow-1">
+                <!-- Navigation -->
+
+                <div class="navbar-collapse collapse"
+                     id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
 
                         <!-- Home -->
+
                         <li class="nav-item">
 
-                            <a class="nav-link text-dark"
+                            <a class="nav-link"
                                asp-area=""
                                asp-controller="Home"
                                asp-action="Index">
+
+                                <i class="bi bi-house-door me-1"></i>
                                 Home
+
                             </a>
 
                         </li>
 
+
                         <!-- Privacy -->
+
                         <li class="nav-item">
 
-                            <a class="nav-link text-dark"
+                            <a class="nav-link"
                                asp-area=""
                                asp-controller="Home"
                                asp-action="Privacy">
+
+                                <i class="bi bi-shield-check me-1"></i>
                                 Privacy
+
                             </a>
 
                         </li>
 
-                        <!-- Admin Dashboard -->
+
+                        <!-- ADMIN -->
+
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
 
-                                <a class="nav-link text-dark"
+                                <a class="nav-link"
                                    asp-area=""
                                    asp-controller="Admin"
                                    asp-action="Dashboard">
-                                    Admin Dashboard
+
+                                    <i class="bi bi-speedometer2 me-1"></i>
+                                    Dashboard
+
                                 </a>
 
                             </li>
                         }
 
-                        <!-- Mechanic Dashboard -->
+
+                        <!-- MECHANIC -->
+
                         @if (User.IsInRole("Mechanic"))
                         {
                             <li class="nav-item">
 
-                                <a class="nav-link text-dark"
+                                <a class="nav-link"
                                    asp-area=""
                                    asp-controller="MechanicDashboard"
                                    asp-action="Index">
-                                    Mechanic Dashboard
+
+                                    <i class="bi bi-tools me-1"></i>
+                                    Dashboard
+
                                 </a>
 
                             </li>
                         }
 
-                        <!-- Customer Dashboard -->
+
+                        <!-- CUSTOMER -->
+
                         @if (User.IsInRole("Customer"))
                         {
                             <li class="nav-item">
 
-                                <a class="nav-link text-dark"
+                                <a class="nav-link"
                                    asp-area=""
                                    asp-controller="CustomerDashboard"
                                    asp-action="Index">
-                                    Customer Dashboard
+
+                                    <i class="bi bi-speedometer2 me-1"></i>
+                                    Dashboard
+
                                 </a>
 
                             </li>
                         }
 
-                    </ul>
 
-                    <partial name="_LoginPartial" />
+                        <!-- Login / Profile -->
+
+                        <li class="nav-item vsc-login-area">
+
+                            <partial name="_LoginPartial" />
+
+                        </li>
+
+                    </ul>
 
                 </div>
 
@@ -132,31 +186,77 @@
 
     </header>
 
-    <div class="container">
 
-        <main role="main" class="pb-3">
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main role="main">
+
+        <div class="container py-4">
 
             @RenderBody()
 
-        </main>
+        </div>
 
-    </div>
+    </main>
 
-    <footer class="border-top footer text-muted">
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="vsc-footer">
 
         <div class="container">
 
-            &copy; 2026 - Vehicle_Service_Center -
+            <div class="row align-items-center gy-3">
 
-            <a asp-area=""
-               asp-controller="Home"
-               asp-action="Privacy">
-                Privacy
-            </a>
+                <div class="col-md-6">
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <span class="vsc-footer-icon">
+                            <i class="bi bi-car-front-fill"></i>
+                        </span>
+
+                        <div>
+
+                            <strong>Vehicle Service Center</strong>
+
+                            <div class="small text-muted">
+                                Vehicle Service Management System
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 text-md-end">
+
+                    <div class="small text-muted">
+
+                        &copy; 2026 Vehicle Service Center
+
+                        <span class="mx-2">•</span>
+
+                        <a asp-area=""
+                           asp-controller="Home"
+                           asp-action="Privacy">
+                            Privacy
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
     </footer>
+
+
+    <!-- ================= SCRIPTS ================= -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 

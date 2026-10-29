@@ -201,34 +201,41 @@ namespace Vehicle_Service_Center.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {
-            var mechanic =
-                await _userManager.FindByIdAsync(id);
+            var mechanic = await _userManager.FindByIdAsync(id);
 
             if (mechanic == null)
             {
-                return NotFound();
+                TempData["Error"] = "Mechanic not found.";
+                return RedirectToAction(nameof(Index));
             }
 
-            var roles =
-                await _userManager.GetRolesAsync(mechanic);
+            var roles = await _userManager.GetRolesAsync(mechanic);
 
             if (!roles.Contains("Mechanic"))
             {
-                return NotFound();
+                TempData["Error"] = "This user is not a mechanic.";
+                return RedirectToAction(nameof(Index));
             }
 
-            var result =
-                await _userManager.DeleteAsync(mechanic);
-
-            if (result.Succeeded)
+            try
             {
-                TempData["Success"] =
-                    "Mechanic deleted successfully.";
+                var result = await _userManager.DeleteAsync(mechanic);
+
+                if (result.Succeeded)
+                {
+                    TempData["Success"] =
+                        "Mechanic deleted successfully.";
+                }
+                else
+                {
+                    TempData["Error"] =
+                        "Unable to delete mechanic.";
+                }
             }
-            else
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
             {
                 TempData["Error"] =
-                    "Unable to delete mechanic.";
+                    "This mechanic cannot be deleted because the mechanic is assigned to one or more service requests. Please reassign or complete those service requests first.";
             }
 
             return RedirectToAction(nameof(Index));
