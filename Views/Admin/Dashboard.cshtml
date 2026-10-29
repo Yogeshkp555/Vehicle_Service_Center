@@ -2,169 +2,260 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="admin-dashboard">
+<div class="container-fluid vsc-admin-dashboard">
 
     <!-- Dashboard Header -->
-    <div class="admin-dashboard-header">
+    <div class="vsc-admin-header">
         <div>
-            <span class="admin-eyebrow">VEHICLE SERVICE CENTER</span>
+            <span class="vsc-admin-eyebrow">
+                <i class="bi bi-grid-1x2-fill me-1"></i> ADMINISTRATION
+            </span>
             <h1>Admin Dashboard</h1>
-            <p>Welcome back, @User.Identity?.Name</p>
+            <p>Welcome back, @User.Identity?.Name. Here's your service center overview.</p>
         </div>
 
-        <div class="admin-profile-badge">
-            <i class="bi bi-shield-check"></i>
+        <div class="vsc-admin-user-badge">
+            <div class="vsc-admin-avatar">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
             <div>
                 <strong>Administrator</strong>
-                <small>System Management</small>
+                <span>Management Portal</span>
             </div>
+            <i class="bi bi-patch-check-fill vsc-admin-verified"></i>
         </div>
     </div>
 
     <!-- Statistics -->
-    <div class="admin-section-heading">
+    <div class="vsc-admin-section-title">
         <div>
-            <h2>Overview</h2>
-            <p>Here's a summary of your service center.</p>
+            <h2>Dashboard Overview</h2>
+            <p>Monitor your service center at a glance.</p>
         </div>
+        <span class="vsc-admin-live-label">
+            <span></span> System Overview
+        </span>
     </div>
 
-    <div class="admin-stats-grid">
+    <div class="row g-3 g-xl-4 vsc-admin-stats">
 
-        <div class="admin-stat-card stat-blue">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-people-fill"></i></div>
-                <span class="admin-stat-label">Customers</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-blue">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">CUSTOMERS</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.TotalCustomers</div>
+                <div class="vsc-admin-stat-description">Registered customers</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-person-check"></i>
+                    Customer accounts
+                </div>
             </div>
-            <h3>@ViewBag.TotalCustomers</h3>
-            <p>Total registered customers</p>
         </div>
 
-        <div class="admin-stat-card stat-purple">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-tools"></i></div>
-                <span class="admin-stat-label">Mechanics</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-purple">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">MECHANICS</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.TotalMechanics</div>
+                <div class="vsc-admin-stat-description">Registered mechanics</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-person-gear"></i>
+                    Service team
+                </div>
             </div>
-            <h3>@ViewBag.TotalMechanics</h3>
-            <p>Registered mechanics</p>
         </div>
 
-        <div class="admin-stat-card stat-cyan">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-car-front-fill"></i></div>
-                <span class="admin-stat-label">Vehicles</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-cyan">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">VEHICLES</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.TotalVehicles</div>
+                <div class="vsc-admin-stat-description">Registered vehicles</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-car-front"></i>
+                    Vehicle records
+                </div>
             </div>
-            <h3>@ViewBag.TotalVehicles</h3>
-            <p>Vehicles in the system</p>
         </div>
 
-        <div class="admin-stat-card stat-orange">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-clock-history"></i></div>
-                <span class="admin-stat-label">Pending Services</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-orange">
+                        <i class="bi bi-clock-history"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">PENDING SERVICES</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.PendingServices</div>
+                <div class="vsc-admin-stat-description">Services awaiting completion</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-hourglass-split"></i>
+                    Work in queue
+                </div>
             </div>
-            <h3>@ViewBag.PendingServices</h3>
-            <p>Services awaiting completion</p>
         </div>
 
-        <div class="admin-stat-card stat-green">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-check-circle-fill"></i></div>
-                <span class="admin-stat-label">Completed Services</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-green">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">COMPLETED SERVICES</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.CompletedServices</div>
+                <div class="vsc-admin-stat-description">Successfully completed</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-check2-circle"></i>
+                    Finished services
+                </div>
             </div>
-            <h3>@ViewBag.CompletedServices</h3>
-            <p>Successfully completed</p>
         </div>
 
-        <div class="admin-stat-card stat-pink">
-            <div class="admin-stat-top">
-                <div class="admin-stat-icon"><i class="bi bi-receipt-cutoff"></i></div>
-                <span class="admin-stat-label">Total Bills</span>
+        <div class="col-12 col-sm-6 col-xl-4">
+            <div class="vsc-admin-stat-card">
+                <div class="vsc-admin-stat-top">
+                    <div class="vsc-admin-stat-icon vsc-stat-pink">
+                        <i class="bi bi-receipt-cutoff"></i>
+                    </div>
+                    <span class="vsc-admin-stat-caption">TOTAL BILLS</span>
+                </div>
+                <div class="vsc-admin-stat-value">@ViewBag.TotalBills</div>
+                <div class="vsc-admin-stat-description">Generated service bills</div>
+                <div class="vsc-admin-stat-footer">
+                    <i class="bi bi-wallet2"></i>
+                    Billing records
+                </div>
             </div>
-            <h3>@ViewBag.TotalBills</h3>
-            <p>Generated service bills</p>
         </div>
 
     </div>
 
-    <!-- Management Section -->
-    <div class="admin-section-heading admin-management-heading">
+    <!-- Management -->
+    <div class="vsc-admin-section-title vsc-admin-management-title">
         <div>
             <h2>Manage Your System</h2>
-            <p>Access and manage all major operations from one place.</p>
+            <p>Quick access to your service center operations.</p>
         </div>
     </div>
 
-    <div class="admin-management-grid">
+    <div class="row g-3 g-xl-4">
 
-        <div class="admin-management-card">
-            <div class="admin-management-icon management-purple">
-                <i class="bi bi-tools"></i>
+        <!-- Mechanics -->
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="vsc-admin-module-card">
+                <div class="vsc-admin-module-top">
+                    <div class="vsc-admin-module-icon vsc-module-purple">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <span class="vsc-admin-module-number">01</span>
+                </div>
+                <h3>Mechanics</h3>
+                <p>Create and manage mechanics who handle customer service requests.</p>
+                <a asp-controller="Mechanic" asp-action="Index" class="vsc-admin-module-link">
+                    <span>Manage Mechanics</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
             </div>
-            <h3>Mechanics</h3>
-            <p>Create and manage mechanic accounts and their information.</p>
-            <a asp-controller="Mechanics" asp-action="Index" class="admin-management-link">
-                Manage Mechanics <i class="bi bi-arrow-right"></i>
-            </a>
         </div>
 
-        <div class="admin-management-card">
-            <div class="admin-management-icon management-blue">
-                <i class="bi bi-people-fill"></i>
+        <!-- Customers -->
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="vsc-admin-module-card">
+                <div class="vsc-admin-module-top">
+                    <div class="vsc-admin-module-icon vsc-module-blue">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <span class="vsc-admin-module-number">02</span>
+                </div>
+                <h3>Customers</h3>
+                <p>Create and manage customer accounts, contact details, and information.</p>
+                <a asp-controller="Customer" asp-action="Index" class="vsc-admin-module-link">
+                    <span>Manage Customers</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
             </div>
-            <h3>Customers</h3>
-            <p>View, create, and manage customer accounts and details.</p>
-            <a asp-controller="Customers" asp-action="Index" class="admin-management-link">
-                Manage Customers <i class="bi bi-arrow-right"></i>
-            </a>
         </div>
 
-        <div class="admin-management-card">
-            <div class="admin-management-icon management-cyan">
-                <i class="bi bi-car-front-fill"></i>
+        <!-- Vehicles -->
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="vsc-admin-module-card">
+                <div class="vsc-admin-module-top">
+                    <div class="vsc-admin-module-icon vsc-module-cyan">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <span class="vsc-admin-module-number">03</span>
+                </div>
+                <h3>Vehicles</h3>
+                <p>Manage customer vehicles, registration numbers, models, and reported issues.</p>
+                <a asp-controller="Vehicle" asp-action="Index" class="vsc-admin-module-link">
+                    <span>Manage Vehicles</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
             </div>
-            <h3>Vehicles</h3>
-            <p>Manage registered vehicles, brands, models, and issues.</p>
-            <a asp-controller="Vehicles" asp-action="Index" class="admin-management-link">
-                Manage Vehicles <i class="bi bi-arrow-right"></i>
-            </a>
         </div>
 
-        <div class="admin-management-card">
-            <div class="admin-management-icon management-orange">
-                <i class="bi bi-clipboard2-pulse-fill"></i>
+        <!-- Service Requests -->
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="vsc-admin-module-card">
+                <div class="vsc-admin-module-top">
+                    <div class="vsc-admin-module-icon vsc-module-orange">
+                        <i class="bi bi-wrench-adjustable-circle"></i>
+                    </div>
+                    <span class="vsc-admin-module-number">04</span>
+                </div>
+                <h3>Service Requests</h3>
+                <p>Create service requests, assign mechanics, and monitor service progress.</p>
+                <a asp-controller="ServiceRequest" asp-action="Index" class="vsc-admin-module-link">
+                    <span>Manage Services</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
             </div>
-            <h3>Service Requests</h3>
-            <p>Create service requests, assign mechanics, and track progress.</p>
-            <a asp-controller="ServiceRequests" asp-action="Index" class="admin-management-link">
-                Manage Services <i class="bi bi-arrow-right"></i>
-            </a>
         </div>
 
-        <div class="admin-management-card">
-            <div class="admin-management-icon management-green">
-                <i class="bi bi-receipt-cutoff"></i>
+        <!-- Bills -->
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="vsc-admin-module-card">
+                <div class="vsc-admin-module-top">
+                    <div class="vsc-admin-module-icon vsc-module-green">
+                        <i class="bi bi-receipt-cutoff"></i>
+                    </div>
+                    <span class="vsc-admin-module-number">05</span>
+                </div>
+                <h3>Bills & Payments</h3>
+                <p>Manage service charges, generate bills, and review payment status.</p>
+                <a asp-controller="Bill" asp-action="Index" class="vsc-admin-module-link">
+                    <span>Manage Bills</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
             </div>
-            <h3>Bills & Payments</h3>
-            <p>Manage service bills, charges, and payment status.</p>
-            <a asp-controller="Bills" asp-action="Index" class="admin-management-link">
-                Manage Bills <i class="bi bi-arrow-right"></i>
-            </a>
         </div>
 
     </div>
 
     <!-- Administrator Information -->
-    <div class="admin-information-panel">
-        <div class="admin-information-icon">
-            <i class="bi bi-info-circle-fill"></i>
+    <div class="vsc-admin-notice">
+        <div class="vsc-admin-notice-icon">
+            <i class="bi bi-info-lg"></i>
         </div>
         <div>
             <h3>Administrator Access</h3>
             <p>
                 You can manage customers, mechanics, vehicles, service requests,
-                and billing from this dashboard. Keep service records and customer
-                information up to date.
+                and billing from this dashboard. Use the management sections above
+                to keep your service center records organized.
             </p>
         </div>
     </div>

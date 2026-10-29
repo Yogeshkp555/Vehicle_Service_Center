@@ -961,374 +961,469 @@ a {
 }
 
 
-/* =========================================
-   ADMIN DASHBOARD
-========================================= */
 
-.admin-dashboard {
-    padding: 28px 0 45px;
+/* ==========================================
+   ADMIN DASHBOARD - MODERN UI
+   ========================================== */
+
+.vsc-admin-dashboard {
+    padding-top: 28px;
+    padding-bottom: 42px;
     color: #172033;
 }
 
-.admin-dashboard-header {
+.vsc-admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
     margin-bottom: 38px;
 }
 
-.admin-eyebrow {
+.vsc-admin-eyebrow {
     display: inline-block;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     color: #2563eb;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 1.7px;
+    letter-spacing: 1.5px;
 }
 
-.admin-dashboard-header h1 {
+.vsc-admin-header h1 {
     margin: 0;
-    font-size: clamp(28px, 3vw, 36px);
+    color: #172033;
+    font-size: clamp(27px, 3vw, 36px);
     font-weight: 800;
     letter-spacing: -1px;
-    color: #172033;
 }
 
-.admin-dashboard-header p {
-    margin: 8px 0 0;
+.vsc-admin-header > div:first-child > p {
+    margin: 9px 0 0;
     color: #64748b;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.admin-profile-badge {
+.vsc-admin-user-badge {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 13px 18px;
+    padding: 12px 16px;
     background: #fff;
     border: 1px solid #e5eaf2;
     border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
 }
 
-    .admin-profile-badge > i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: #eff6ff;
-        color: #2563eb;
-        font-size: 21px;
-    }
-
-    .admin-profile-badge strong,
-    .admin-profile-badge small {
-        display: block;
-    }
-
-    .admin-profile-badge strong {
-        font-size: 13px;
-        color: #172033;
-    }
-
-    .admin-profile-badge small {
-        margin-top: 4px;
-        font-size: 11px;
-        color: #64748b;
-    }
-
-.admin-section-heading {
-    margin-bottom: 18px;
+.vsc-admin-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    color: #2563eb;
+    background: #eff6ff;
+    border-radius: 12px;
+    font-size: 20px;
 }
 
-    .admin-section-heading h2 {
+.vsc-admin-user-badge strong,
+.vsc-admin-user-badge span {
+    display: block;
+}
+
+.vsc-admin-user-badge strong {
+    color: #172033;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.vsc-admin-user-badge span {
+    margin-top: 4px;
+    color: #8490a3;
+    font-size: 11px;
+}
+
+.vsc-admin-verified {
+    margin-left: 5px;
+    color: #2563eb;
+    font-size: 16px;
+}
+
+.vsc-admin-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 19px;
+}
+
+    .vsc-admin-section-title h2 {
         margin: 0;
-        font-size: 21px;
-        font-weight: 750;
         color: #172033;
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.35px;
     }
 
-    .admin-section-heading p {
+    .vsc-admin-section-title p {
         margin: 6px 0 0;
+        color: #748197;
         font-size: 13px;
-        color: #64748b;
+        line-height: 1.6;
     }
 
-.admin-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+.vsc-admin-live-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: #64748b;
+    background: #fff;
+    border: 1px solid #e5eaf2;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 650;
+    white-space: nowrap;
 }
 
-.admin-stat-card {
-    position: relative;
-    overflow: hidden;
-    min-width: 0;
+    .vsc-admin-live-label > span {
+        width: 7px;
+        height: 7px;
+        background: #22c55e;
+        border-radius: 50%;
+    }
+
+.vsc-admin-stats {
+    margin-bottom: 0;
+}
+
+.vsc-admin-stat-card {
+    height: 100%;
+    min-height: 210px;
     padding: 22px;
     background: #fff;
     border: 1px solid #e8edf5;
-    border-radius: 18px;
+    border-radius: 17px;
     box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-    .admin-stat-card:hover {
+    .vsc-admin-stat-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 12px 27px rgba(15, 23, 42, 0.075);
     }
 
-.admin-stat-top {
+.vsc-admin-stat-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 19px;
 }
 
-.admin-stat-icon {
+.vsc-admin-stat-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 47px;
+    height: 47px;
     flex-shrink: 0;
     border-radius: 14px;
     font-size: 21px;
 }
 
-.admin-stat-label {
-    color: #64748b;
-    font-size: 13px;
-    font-weight: 650;
+.vsc-admin-stat-caption {
+    color: #8490a3;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-align: right;
 }
 
-.admin-stat-card h3 {
-    margin: 0;
+.vsc-admin-stat-value {
     color: #172033;
     font-size: 32px;
-    line-height: 1.2;
     font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.8px;
 }
 
-.admin-stat-card > p {
-    margin: 8px 0 0;
-    color: #8490a3;
+.vsc-admin-stat-description {
+    margin-top: 7px;
+    color: #64748b;
     font-size: 12px;
 }
 
-/* Statistic card colors */
+.vsc-admin-stat-footer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 17px;
+    padding-top: 12px;
+    color: #8a95a7;
+    border-top: 1px solid #f0f2f7;
+    font-size: 11px;
+}
 
-.stat-blue .admin-stat-icon {
-    background: #eaf2ff;
+    .vsc-admin-stat-footer i {
+        font-size: 13px;
+    }
+
+/* Statistic icon colors */
+
+.vsc-stat-blue {
     color: #2563eb;
+    background: #eaf2ff;
 }
 
-.stat-purple .admin-stat-icon {
-    background: #f1eaff;
+.vsc-stat-purple {
     color: #7c3aed;
+    background: #f1eaff;
 }
 
-.stat-cyan .admin-stat-icon {
-    background: #e2f8ff;
+.vsc-stat-cyan {
     color: #0891b2;
+    background: #e2f8ff;
 }
 
-.stat-orange .admin-stat-icon {
-    background: #fff1df;
+.vsc-stat-orange {
     color: #ea580c;
+    background: #fff1df;
 }
 
-.stat-green .admin-stat-icon {
-    background: #dcfce7;
+.vsc-stat-green {
     color: #16a34a;
+    background: #dcfce7;
 }
 
-.stat-pink .admin-stat-icon {
-    background: #ffe8f1;
+.vsc-stat-pink {
     color: #db2777;
+    background: #ffe8f1;
 }
 
-.admin-management-heading {
+.vsc-admin-management-title {
     margin-top: 42px;
 }
 
-.admin-management-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.admin-management-card {
+.vsc-admin-module-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    min-width: 0;
-    padding: 24px;
+    height: 100%;
+    min-height: 260px;
+    padding: 23px;
     background: #fff;
     border: 1px solid #e8edf5;
-    border-radius: 18px;
+    border-radius: 17px;
     box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-    .admin-management-card:hover {
+    .vsc-admin-module-card:hover {
         transform: translateY(-4px);
         border-color: #cbdcff;
-        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.075);
+        box-shadow: 0 12px 27px rgba(15, 23, 42, 0.075);
     }
 
-.admin-management-icon {
+.vsc-admin-module-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.vsc-admin-module-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 18px;
-    border-radius: 15px;
-    font-size: 23px;
+    width: 49px;
+    height: 49px;
+    border-radius: 14px;
+    font-size: 22px;
 }
 
-.management-purple {
+.vsc-admin-module-number {
+    color: #c2cbd8;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.vsc-module-purple {
     color: #7c3aed;
     background: #f1eaff;
 }
 
-.management-blue {
+.vsc-module-blue {
     color: #2563eb;
     background: #eaf2ff;
 }
 
-.management-cyan {
+.vsc-module-cyan {
     color: #0891b2;
     background: #e2f8ff;
 }
 
-.management-orange {
+.vsc-module-orange {
     color: #ea580c;
     background: #fff1df;
 }
 
-.management-green {
+.vsc-module-green {
     color: #16a34a;
     background: #dcfce7;
 }
 
-.admin-management-card h3 {
+.vsc-admin-module-card h3 {
     margin: 0 0 9px;
-    font-size: 17px;
-    font-weight: 750;
     color: #172033;
+    font-size: 17px;
+    font-weight: 800;
 }
 
-.admin-management-card > p {
+.vsc-admin-module-card > p {
     flex: 1;
-    margin: 0 0 22px;
+    margin: 0 0 23px;
     color: #64748b;
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 12px;
+    line-height: 1.8;
 }
 
-.admin-management-link {
-    display: inline-flex;
+.vsc-admin-module-link {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 14px;
-    color: #fff !important;
-    background: #2563eb;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 11px 14px;
+    color: #2563eb !important;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
     border-radius: 10px;
     text-decoration: none !important;
     font-size: 12px;
-    font-weight: 700;
-    transition: background 0.2s ease, gap 0.2s ease;
+    font-weight: 750;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-    .admin-management-link:hover {
+    .vsc-admin-module-link:hover {
         color: #fff !important;
-        background: #1d4ed8;
-        gap: 14px;
+        background: #2563eb;
+        border-color: #2563eb;
     }
 
-.admin-information-panel {
+    .vsc-admin-module-link i {
+        font-size: 15px;
+        transition: transform 0.2s ease;
+    }
+
+    .vsc-admin-module-link:hover i {
+        transform: translate(2px, -2px);
+    }
+
+.vsc-admin-notice {
     display: flex;
     align-items: flex-start;
     gap: 15px;
-    margin-top: 28px;
+    margin-top: 30px;
     padding: 22px;
     background: #eff6ff;
     border: 1px solid #dbeafe;
     border-radius: 16px;
 }
 
-.admin-information-icon {
+.vsc-admin-notice-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 41px;
+    height: 41px;
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
     color: #2563eb;
     background: #fff;
     border-radius: 12px;
-    font-size: 19px;
+    font-size: 20px;
 }
 
-.admin-information-panel h3 {
-    margin: 1px 0 7px;
-    font-size: 14px;
-    font-weight: 750;
+.vsc-admin-notice h3 {
+    margin: 2px 0 7px;
     color: #1e40af;
+    font-size: 14px;
+    font-weight: 800;
 }
 
-.admin-information-panel p {
+.vsc-admin-notice p {
     margin: 0;
     color: #475569;
     font-size: 12px;
     line-height: 1.8;
 }
 
-/* Responsive layout */
+/* Tablet */
 
-@media (max-width: 991px) {
-    .admin-stats-grid,
-    .admin-management-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 991.98px) {
+    .vsc-admin-dashboard {
+        padding-top: 22px;
+    }
+
+    .vsc-admin-header {
+        margin-bottom: 30px;
+    }
+
+    .vsc-admin-stat-card {
+        min-height: 200px;
+    }
+
+    .vsc-admin-module-card {
+        min-height: 245px;
     }
 }
 
-@media (max-width: 575px) {
-    .admin-dashboard {
-        padding-top: 18px;
+/* Mobile */
+
+@media (max-width: 575.98px) {
+    .vsc-admin-dashboard {
+        padding-top: 16px;
+        padding-bottom: 28px;
     }
 
-    .admin-dashboard-header {
+    .vsc-admin-header {
         align-items: flex-start;
         flex-direction: column;
+        gap: 18px;
         margin-bottom: 28px;
     }
 
-    .admin-profile-badge {
+    .vsc-admin-user-badge {
         width: 100%;
     }
 
-    .admin-stats-grid,
-    .admin-management-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .vsc-admin-section-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .admin-stat-card,
-    .admin-management-card {
+        .vsc-admin-section-title h2 {
+            font-size: 19px;
+        }
+
+    .vsc-admin-stat-card {
+        min-height: 0;
         padding: 20px;
     }
 
-    .admin-management-heading {
+    .vsc-admin-management-title {
         margin-top: 32px;
     }
 
-    .admin-information-panel {
+    .vsc-admin-module-card {
+        min-height: 0;
+        padding: 21px;
+    }
+
+    .vsc-admin-notice {
         padding: 17px;
     }
 }
